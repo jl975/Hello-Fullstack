@@ -3,13 +3,13 @@ function createCalculator() {
 		number: 0
 	};
 	calculator.value = function() {
-		return calculator.number;
+		return this.number;
 	}
 	calculator.add = function(num) {
-		calculator.number += num;
+		this.number += num;
 	}
 	calculator.subtract = function(num) {
-		calculator.number -= num;
+		this.number -= num;
 	}
 	return calculator;
 }
