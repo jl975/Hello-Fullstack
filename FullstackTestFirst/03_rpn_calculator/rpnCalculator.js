@@ -4,37 +4,34 @@ function RPNCalculator() {
 RPNCalculator.prototype.push = function(num) {
 	this.stack.push(num);
 };
-RPNCalculator.prototype.plus = function() {
+RPNCalculator.prototype.evaluate = function(operation) {
 	var arg2 = this.stack.pop();
 	var arg1 = this.stack.pop();
-	if (arg1 && arg2)
-		this.stack.push(arg1 + arg2);
-	else
-		throw "rpnCalculator is empty";
+	if (arg1 && arg2) {
+		this.push(operation(arg1, arg2));
+	}
+	else throw "rpnCalculator is empty";
+}
+
+RPNCalculator.prototype.plus = function() {
+	this.evaluate(function(arg1, arg2) {
+		return arg1 + arg2;
+	});
 };
 RPNCalculator.prototype.minus = function() {
-	var arg2 = this.stack.pop();
-	var arg1 = this.stack.pop();
-	if (arg1 && arg2)
-		this.stack.push(arg1 - arg2);
-	else
-		throw "rpnCalculator is empty";
+	this.evaluate(function(arg1, arg2) {
+		return arg1 - arg2;
+	});
 };
 RPNCalculator.prototype.times = function() {
-	var arg2 = this.stack.pop();
-	var arg1 = this.stack.pop();
-	if (arg1 && arg2)
-		this.stack.push(arg1 * arg2);
-	else
-		throw "rpnCalculator is empty";
+	this.evaluate(function(arg1, arg2) {
+		return arg1 * arg2;
+	});
 };
 RPNCalculator.prototype.divide = function() {
-	var arg2 = this.stack.pop();
-	var arg1 = this.stack.pop();
-	if (arg1 && arg2)
-		this.stack.push(arg1 / arg2);
-	else
-		throw "rpnCalculator is empty";
+	this.evaluate(function(arg1, arg2) {
+		return arg1 / arg2;
+	});
 };
 RPNCalculator.prototype.value = function() {
 	return this.stack[this.stack.length-1];
