@@ -1,5 +1,3 @@
-// 06_Functional 
-
 
 function iterate(array, currentOutput, taskFunc) {
 	var updatedOutput = taskFunc(currentOutput, array[0]);
