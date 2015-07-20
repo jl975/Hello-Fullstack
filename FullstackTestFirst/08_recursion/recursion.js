@@ -48,26 +48,3 @@ function stringify(input) {
 		return '{' + o.join(',') + '}';
 	}
 }
-
-var und = undefined,
-  nll = null,
-  bool = true,
-  num = 123,
-  str = "abc",
-  fnc = function() {},
-  arr = [],
-  obj = {};
-
-var result = stringify({
-  a: {
-    '5': true,
-    c: [null, {
-      d: 1
-    }],
-    e: {
-      f: "abc"
-    }
-  },
-  g: undefined
-});
-console.log(result);
